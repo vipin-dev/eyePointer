@@ -1,0 +1,18 @@
+.workspace {
+  aspect-ratio: 1/0.5;
+  border: 6px;
+  border-color: rgb(29, 208, 71);
+  border-style: solid;
+  border-radius: 4px;
+  margin: 40px;
+  margin-top: 10px;
+  margin-bottom: 0px;
+  background-color: white;
+}
+body {
+  margin: 0px;
+  padding: 0%;
+}
+.webpage {
+  margin: 0%;
+}
