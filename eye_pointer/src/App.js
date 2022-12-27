@@ -2,6 +2,7 @@ import React from "react";
 import Button from "@mui/material/Button";
 import { Box, margin } from "@mui/system";
 import bg from "./images/bg.jpg";
+import Tile from "./components/tile";
 
 function App() {
   return (
@@ -13,7 +14,7 @@ function App() {
         <Button variant="contained">About Us</Button>
       </Box>
       <div className="workspace">
-        <h1>HEllo</h1>
+        <Tile />
       </div>
     </div>
   );
