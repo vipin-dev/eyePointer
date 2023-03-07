@@ -1,23 +1,50 @@
 import React from "react";
-import Button from "@mui/material/Button";
-import { Box, margin } from "@mui/system";
-import bg from "./images/bg.jpg";
 import Tile from "./components/tile";
+import styled from "styled-components";
+import Button from "@mui/material-next/Button";
+import AddCircleIcon from '@mui/icons-material/AddCircle';
 
 function App() {
+    let text="Hello My Dear";
   return (
-    <div
-      className="webpage"
-      style={{ backgroundImage: `url(${bg})`, paddingBottom: "30px" }}
-    >
-      <Box sx={{ textAlign: "right", padding: "10px" }}>
-        <Button variant="contained">About Us</Button>
-      </Box>
-      <div className="workspace">
-        <Tile />
-      </div>
-    </div>
+    <WorkPage>
+        <Buttons>
+            <Button size="small" variant="outlined" startIcon={<AddCircleIcon/>}> </Button>
+            <Button size="small" variant="outlined"> About Us </Button>
+        </Buttons>
+        <WorkSpace>
+            <Tile text={text} />
+        </WorkSpace>
+    </WorkPage>
   );
 }
 
+
+const WorkPage = styled.div`
+    overflow: "hidden";
+    position:relative;
+    height:700px;
+    width:1300px;
+`;
+
+const WorkSpace=styled.div`
+    position:absolute;
+    left:66px;
+    top:66px;
+    right:66px;
+    height:600px;
+    width:inherit;
+    border: 6px solid black;
+    border-radius: 4px;
+    background-color: white;
+`
+
+const Buttons=styled.div`
+    position:absolute;
+    top:15px;
+    left:66px;
+    width:inherit;
+    display:flex;
+    justify-content:space-between;
+`
 export default App;
