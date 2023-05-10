@@ -8,7 +8,8 @@ function Tile(props) {
   const [isDisabled, setIsDisabled] = useState(true);
   const [buttonName, setButtonName] = useState("EDIT");
   function stopEventHandler(e, dragElement) {
-    console.log(dragElement.x, dragElement.y);
+    console.log("Drag X" + dragElement.x, dragElement.y);
+    console.log("Client X" + e.clientX, e.clientY);
     //Need to store this dragElement.x and y to restore the position after refresh
   }
 
@@ -21,7 +22,7 @@ function Tile(props) {
     <Draggable
       onStop={stopEventHandler}
       bounds="parent"
-      defaultPosition={{ x: 383, y: 100 }} //We need to pass the x and y value from DB
+      // defaultPosition={{ x: 1184, y: 202 }} //We need to pass the x and y value from DB
     >
       <BoxStyle>
         <TileStyle>
@@ -39,9 +40,17 @@ function Tile(props) {
             disabled={isDisabled}
           />
           <ButtonStyle>
-            <Button variant="outlined" size="small" disabled={isDisabled}>
+            <Button
+              variant="outlined"
+              size="small"
+              onClick={() => {
+                console.log(props);
+                props.deleteTile(props.id);
+              }}
+              disabled={isDisabled}
+            >
               {" "}
-              DELETE
+              {"DELETE"}
             </Button>
             <Button
               variant="outlined"

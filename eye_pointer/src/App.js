@@ -1,39 +1,44 @@
 import React, { useState } from "react";
 import Tile from "./components/tile";
+import { v4 as uuidv4 } from "uuid";
 import styled from "styled-components";
 import Button from "@mui/material-next/Button";
-import AddCircleIcon from "@mui/icons-material/AddCircle";
 
 function App() {
-  const [tiles, setTiles] = useState([1, 3]);
+  const [tiles, setTiles] = useState([]);
+  console.log(tiles);
+  const addTiles = () => {
+    setTiles((prevTiles) => [...prevTiles, { id: uuidv4() }]);
+  };
+
+  const deleteTile = (id) => {
+    setTiles((prev) => {
+      return prev.filter((item) => {
+        console.log(item.id, id);
+        return item.id !== id;
+      });
+    });
+  };
 
   return (
     <WorkPage>
       <Buttons>
-        <Button
-          onClick={() => {
-            console.log("Hello");
-          }}
-          size="small"
-          variant="outlined"
-          startIcon={<AddCircleIcon />}
+        <button
+          onClick={addTiles}
+          // size="small"
+          // variant="outlined"
+          // startIcon={<AddCircleIcon />}
         >
-          {" "}
-        </Button>
-        <Button
-          size="small"
-          variant="outlined"
-          onClick={() => {
-            "Pressed About Us";
-          }}
-        >
-          {" "}
-          About Us{" "}
+          Click
+        </button>
+        <Button size="small" variant="outlined">
+          About Us
         </Button>
       </Buttons>
+      {/* <EyeTrackingDemo /> */}
       <WorkSpace>
         {tiles.map((tile) => {
-          return <Tile />;
+          return <Tile key={tile.id} id={tile.id} deleteTile={deleteTile} />;
         })}
       </WorkSpace>
     </WorkPage>
