@@ -5,43 +5,55 @@ import styled from "styled-components";
 import Button from "@mui/material-next/Button";
 
 function App() {
-  const [tiles, setTiles] = useState([]);
-  console.log(tiles);
-  const addTiles = () => {
-    setTiles((prevTiles) => [...prevTiles, { id: uuidv4() }]);
-  };
+  // const [tiles, setTiles] = useState([]);
+  // console.log(tiles);
+  // const addTiles = () => {
+  //   setTiles((prevTiles) => [...prevTiles, { id: uuidv4() }]);
+  // };
 
-  const deleteTile = (id) => {
-    setTiles((prev) => {
-      return prev.filter((item) => {
-        console.log(item.id, id);
-        return item.id !== id;
-      });
-    });
-  };
+  // const deleteTile = (id) => {
+  //   setTiles((prev) => {
+  //     return prev.filter((item) => {
+  //       console.log(item.id, id);
+  //       return item.id !== id;
+  //     });
+  //   });
+  // };
+
+  webgazer
+    .setGazeListener(function (data, elapsedTime) {
+      if (data == null) {
+        return;
+      }
+      var xprediction = data.x; //these x coordinates are relative to the viewport
+      var yprediction = data.y; //these y coordinates are relative to the viewport
+      console.log(elapsedTime); //elapsed time is based on time since begin was called
+    })
+    .begin();
 
   return (
-    <WorkPage>
-      <Buttons>
-        <button
-          onClick={addTiles}
-          // size="small"
-          // variant="outlined"
-          // startIcon={<AddCircleIcon />}
-        >
-          Click
-        </button>
-        <Button size="small" variant="outlined">
-          About Us
-        </Button>
-      </Buttons>
-      {/* <EyeTrackingDemo /> */}
-      <WorkSpace>
-        {tiles.map((tile) => {
-          return <Tile key={tile.id} id={tile.id} deleteTile={deleteTile} />;
-        })}
-      </WorkSpace>
-    </WorkPage>
+    // <WorkPage>
+    //   <Buttons>
+    //     <button
+    //       onClick={addTiles}
+    //       // size="small"
+    //       // variant="outlined"
+    //       // startIcon={<AddCircleIcon />}
+    //     >
+    //       Click
+    //     </button>
+    //     <Button size="small" variant="outlined">
+    //       About Us
+    //     </Button>
+    //   </Buttons>
+    //   {/* <EyeTrackingDemo /> */}
+    //   <WorkSpace>
+    //     {tiles.map((tile) => {
+    //       return <Tile key={tile.id} id={tile.id} deleteTile={deleteTile} />;
+    //     })}
+    //   </WorkSpace>
+    // </WorkPage>
+    <></>
   );
 }
 
